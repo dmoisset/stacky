@@ -26,26 +26,87 @@ def evaluator(program):
             if argument == Operator.plus:
                 stack.append(stack[-2]+top)
             elif argument == Operator.minus:
+                temp = stack[-2]-top
                 del stack[-1]
                 del stack[-1]
-                stack.append(stack[-2]-top)
+                stack.append(temp)
             elif argument == Operator.mul:
+                temp = stack[-2]*top
                 del stack[-1]
                 del stack[-1]
-                stack.append(stack[-2]*top)
+                stack.append(temp)
             elif argument == Operator.div:
+                temp = stack[-2]/top
                 del stack[-1]
                 del stack[-1]
-                stack.append(stack[-2]/top)
+                stack.append(temp)
+            elif argument == Operator.lt:
+                if stack[-2] < top:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(True)
+                else:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(False)
+            elif argument == Operator.gt:
+                if stack[-2] > top:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(True)
+                else:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(False)
+            elif argument == Operator.eq:
+                if stack[-2] == top:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(True)
+                else:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(False)
+            elif argument == Operator.ne:
+                if stack[-2] != top:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(True)
+                else:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(False)
+            elif argument == Operator.le:
+                if stack[-2] <= top:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(True)
+                else:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(False)
+            elif argument == Operator.ge:
+                if stack[-2] >= top:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(True)
+                else:
+                    del stack[-1]
+                    del stack[-1]
+                    stack.append(False)
+            elif argument == Operator.and_:
+                temp = stack[-1] & stack[-2]
+                del stack[-1]
+                del stack[-1]
+                stack.append(temp)
+            elif argument == Operator.or_:
+                temp = stack[-1] or stack[-2]
+                del stack[-1]
+                del stack[-1]
+                stack.append(temp)
             elif argument == Operator.not_:
                 if top == True:
                     stack[-1] = False
                 elif top == False:
                     stack[-1] = True
-            elif argument == Operator.lt:
-                if stack[-2] < top:
-                    del stack[-1]
-                    del stack[-1]
-                    stack.append(True):
-
        del program[0]
