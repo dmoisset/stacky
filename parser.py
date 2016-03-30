@@ -44,7 +44,7 @@ def parse(input):
                 result.append((Opcode.get, tok[1]))
         elif tok.type == tokenize.OP:
             name = tok[1]
-            if name in "->":
+            if name == "->":
                 varname = next(lexer)[1]
                 result.append((Opcode.let, varname))
             elif name in OPERATORS:
