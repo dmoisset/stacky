@@ -20,7 +20,7 @@ def evaluator(program):
         elif instruction == Opcode.get: # read variable
             stack.append(vardict[instruction])
         elif instruction == Opcode.print: # view the top of stack
-            print top
+            print(top)
         elif instruction == Opcode.oper: # operators + - * / neg lt gt eq ne
                                          # le ge and_ or_ not_
             if argument == Operator.plus:
