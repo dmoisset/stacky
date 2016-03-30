@@ -41,10 +41,13 @@ def parse(input):
             elif name == "print":
                 result.append((Opcode.print, None))
             else:
-                error(tok)
+                result.append((Opcode.get, tok[1]))
         elif tok.type == tokenize.OP:
             name = tok[1]
-            if name in OPERATORS:
+            if name in "->":
+                varname = next(lexer)[1]
+                result.append((Opcode.let, varname))
+            elif name in OPERATORS:
                 result.append((Opcode.oper, OPERATORS[tok[1]]))
             else:
                 error(tok)
