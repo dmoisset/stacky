@@ -23,7 +23,10 @@ def evaluator(program):
         elif instruction == Opcode.oper: # operators + - * / neg lt gt eq ne
                                          # le ge and_ or_ not_
             if argument == Operator.plus:
-                stack.append(stack[-2] + stack[-1])
+                temp = stack[-2] + stack[-1]
+                del stack[-1]
+                del stack[-1]
+                stack.append(temp)
             elif argument == Operator.minus:
                 temp = stack[-2] - stack[-1]
                 del stack[-1]
